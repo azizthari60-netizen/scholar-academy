@@ -1,0 +1,128 @@
+:root {
+  --primary: #113c8a;
+  --accent: #f0a500;
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --text: #18212f;
+  --muted: #64748b;
+  --border: #e2e8f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #eef4ff 0%, #f8fbff 100%);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.auth-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.auth-card {
+  width: min(100%, 980px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--surface);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(17, 60, 138, 0.16);
+}
+
+.auth-hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #0a2d67 100%);
+  color: white;
+  padding: 42px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  object-fit: contain;
+  margin-bottom: 18px;
+  background: white;
+  padding: 10px;
+}
+
+.auth-form {
+  padding: 36px 32px;
+  display: grid;
+  gap: 12px;
+}
+
+.field-label {
+  font-weight: 600;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 12px 14px;
+  font: inherit;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid rgba(17, 60, 138, 0.15);
+  border-color: var(--primary);
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.login-btn {
+  background: var(--primary);
+  color: white;
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.form-message {
+  min-height: 20px;
+  color: var(--primary);
+  font-size: 0.95rem;
+}
+
+.form-message.error { color: #c0392b; }
+
+.demo-hint {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 4px;
+}
+
+@media (max-width: 760px) {
+  .auth-card {
+    grid-template-columns: 1fr;
+  }
+  .auth-hero { padding-bottom: 24px; }
+}

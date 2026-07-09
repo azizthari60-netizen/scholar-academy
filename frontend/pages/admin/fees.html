@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fees | Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/css/dashboard.css" />
+  </head>
+  <body data-page="fees">
+    <div class="app-shell">
+      <aside class="sidebar"><div class="brand-box"><div class="mark">SC</div><div><h1>The Scholar</h1><p>Admin Console</p></div></div><nav class="sidebar-nav"></nav></aside>
+      <main class="main-panel">
+        <button class="mobile-toggle" aria-label="Toggle menu">☰</button>
+        <div class="topbar"><div><h2>Fee Management</h2><p>Track dues and payments.</p></div><div class="topbar-actions"><div class="user-chip"><div class="avatar" id="userAvatar">A</div><span id="userName">Admin</span></div><button class="logout-btn" id="logoutBtn" type="button">Logout</button></div></div>
+        <div class="page-toolbar"><h3>Fee Records</h3><button class="btn-primary" id="addBtn" type="button">+ Add Fee Record</button></div>
+        <div class="panel table-card"><table><thead><tr><th>Student</th><th>Amount</th><th>Month</th><th>Due Date</th><th>Status</th><th>Action</th></tr></thead><tbody id="dataTableBody"></tbody></table></div>
+      </main>
+    </div>
+    <div class="modal-overlay" id="formModal"><div class="modal"><h3>Add Fee Record</h3><form id="dataForm" class="form-grid">
+      <div class="form-field"><label>Student</label><select name="student" required></select></div>
+      <div class="form-field"><label>Amount (Rs.)</label><input name="amount" type="number" required /></div>
+      <div class="form-field"><label>Month</label><input name="month" placeholder="July 2026" /></div>
+      <div class="form-field"><label>Due Date</label><input name="dueDate" type="date" required /></div>
+      <div class="modal-actions"><button class="btn-secondary" id="cancelBtn" type="button">Cancel</button><button class="btn-primary" type="submit">Save</button></div>
+    </form></div></div>
+    <script src="../../assets/js/api.js"></script><script src="../../assets/js/dashboard-common.js"></script><script src="../../assets/js/admin-pages.js"></script>
+  </body>
+</html>

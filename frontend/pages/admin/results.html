@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results | Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/css/dashboard.css" />
+  </head>
+  <body data-page="results">
+    <div class="app-shell">
+      <aside class="sidebar"><div class="brand-box"><div class="mark">SC</div><div><h1>The Scholar</h1><p>Admin Console</p></div></div><nav class="sidebar-nav"></nav></aside>
+      <main class="main-panel">
+        <button class="mobile-toggle" aria-label="Toggle menu">☰</button>
+        <div class="topbar"><div><h2>Results</h2><p>Upload and manage exam results.</p></div><div class="topbar-actions"><div class="user-chip"><div class="avatar" id="userAvatar">A</div><span id="userName">Admin</span></div><button class="logout-btn" id="logoutBtn" type="button">Logout</button></div></div>
+        <div class="page-toolbar"><h3>All Results</h3><button class="btn-primary" id="addBtn" type="button">+ Add Result</button></div>
+        <div class="panel table-card"><table><thead><tr><th>Student</th><th>Subject</th><th>Exam</th><th>Score</th><th>Actions</th></tr></thead><tbody id="dataTableBody"></tbody></table></div>
+      </main>
+    </div>
+    <div class="modal-overlay" id="formModal"><div class="modal"><h3>Add Result</h3><form id="dataForm" class="form-grid">
+      <div class="form-field"><label>Student</label><select name="student" required></select></div>
+      <div class="form-field"><label>Subject</label><input name="subject" required /></div>
+      <div class="form-field"><label>Exam Type</label><select name="examType"><option>Weekly Test</option><option>Midterm</option><option>Final</option><option>Mock</option></select></div>
+      <div class="form-field"><label>Score (%)</label><input name="score" type="number" min="0" max="100" required /></div>
+      <div class="modal-actions"><button class="btn-secondary" id="cancelBtn" type="button">Cancel</button><button class="btn-primary" type="submit">Save</button></div>
+    </form></div></div>
+    <script src="../../assets/js/api.js"></script><script src="../../assets/js/dashboard-common.js"></script><script src="../../assets/js/admin-pages.js"></script>
+  </body>
+</html>

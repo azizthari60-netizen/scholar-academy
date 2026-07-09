@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Scholar Coaching Academy Umerkot</title>
+    <meta name="description" content="A modern academic landing page for The Scholar Coaching Academy Umerkot." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#">
+        <img class="brand-mark" src="/frontend/assets/photo/scholar.logo.jpeg" alt="The Scholar Coaching Academy logo" />
+        <div>
+          <h1>The Scholar Coaching Academy</h1>
+          <p>Umerkot</p>
+        </div>
+      </a>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️</button>
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation">☰</button>
+        <nav class="nav-links" id="navLinks">
+          <a href="#programs">Programs</a>
+          <a href="#faculty">Faculty</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#admissions">Admissions</a>
+          <a href="#contact">Contact</a>
+          <a href="pages/auth/login.html">Login</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero reveal">
+      <div class="hero-copy">
+        <span class="badge">Excellence in Learning</span>
+        <h2>Shaping bright futures through focused coaching and discipline.</h2>
+        <p>We help students unlock their potential with strong academic guidance, modern teaching methods, and a supportive learning environment.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#programs">Explore Programs</a>
+          <a class="btn btn-secondary" href="#admissions">Apply for Admission</a>
+        </div>
+      </div>
+
+      <div class="hero-slider" aria-label="Campus highlights slider">
+        <div class="slide active">
+          <img src="/frontend/assets/photo/hero1.jpg" alt="Students discussing in class" />
+          <div class="slide-caption">
+            <h3>Focused learning spaces</h3>
+            <p>Bright classrooms built for concentration and confidence.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="/frontend/assets/photo/hero2.jpg" alt="Teacher guiding students" />
+          <div class="slide-caption">
+            <h3>Expert mentorship</h3>
+            <p>Dedicated teachers helping students achieve more every day.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="/frontend/assets/photo/hero3.jpg" alt="Library and study session" />
+          <div class="slide-caption">
+            <h3>Study with discipline</h3>
+            <p>Structured revision, guided practice, and exam readiness.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="/frontend/assets/photo/hero4.jpg" alt="Academic achievers" />
+          <div class="slide-caption">
+            <h3>Results that inspire</h3>
+            <p>Students grow through consistent coaching and strong values.</p>
+          </div>
+        </div>
+        <button class="slider-control prev" type="button" aria-label="Previous slide">‹</button>
+        <button class="slider-control next" type="button" aria-label="Next slide">›</button>
+        <div class="slider-dots" aria-label="Slider pagination"></div>
+      </div>
+    </section>
+
+    <main>
+      <section class="section reveal" id="programs">
+        <div class="section-heading">
+          <span class="badge badge-soft">Our Academic Groups</span>
+          <h3>Professional study tracks for every ambition</h3>
+        </div>
+        <div class="program-grid">
+          <article class="card program-card">
+            <h4>Pre-Medical</h4>
+            <p>Biology, chemistry, and exam-focused coaching for medical career aspirants.</p>
+            <ul>
+              <li>Biology & Chemistry focus</li>
+              <li>Weekly tests</li>
+              <li>Concept-based learning</li>
+            </ul>
+          </article>
+          <article class="card program-card">
+            <h4>Pre-Engineering</h4>
+            <p>Physics, math, and analytical training for engineering and competitive exams.</p>
+            <ul>
+              <li>Math & Physics mastery</li>
+              <li>Problem solving labs</li>
+              <li>Mock examinations</li>
+            </ul>
+          </article>
+          <article class="card program-card">
+            <h4>Computer Science</h4>
+            <p>Modern digital learning paths for IT, programming, and future-ready skills.</p>
+            <ul>
+              <li>Programming fundamentals</li>
+              <li>Software concepts</li>
+              <li>Career guidance</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section faculty-section reveal" id="faculty">
+        <div class="section-heading">
+          <span class="badge badge-soft">Meet Our Team</span>
+          <h3>Experienced mentors guiding every student with care and excellence</h3>
+          <p class="section-subtext">Our teachers bring subject expertise, discipline, and encouragement to every classroom.</p>
+        </div>
+        <div class="team-slider">
+          <div class="team-track">
+            <article class="card faculty-card team-card">
+              <img src="/frontend/assets/photo/partab.jpeg" alt="Faculty member profile" />
+              <h4>Prof Dr Partab Rai Meghwar</h4>
+              <p>Chemistry Professor</p>
+            </article>
+            <article class="card faculty-card team-card">
+              <img src="/frontend/assets/photo/aziz.usman.jpeg" alt="Faculty member profile" />
+              <h4>Prof Dr Aziz Usman Yousfani</h4>
+              <p>Biology Professor</p>
+            </article>
+            <article class="card faculty-card team-card">
+              <img src="/frontend/assets/photo/hafeez.kunbher.jpeg" alt="Faculty member profile" />
+              <h4>Prof M Hafeez Kunbher</h4>
+              <p>Physics Professor</p>
+            </article>
+            <article class="card faculty-card team-card">
+              <img src="/frontend/assets/photo/vikram.das.kamaliya.jpeg" alt="Faculty member profile" />
+              <h4>Prof Vikram Das Kamaliya</h4>
+              <p>English Professor</p>
+            </article>
+            <article class="card faculty-card team-card">
+              <img src="/frontend/assets/photo/aziz.jpeg" alt="Faculty member profile" />
+              <h4>Prof Azizullah Samejo</h4>
+              <p>Computer Science Professor</p>
+            </article>
+            <article class="card faculty-card team-card">
+              <img src="/frontend/assets/photo/ramesh.jpeg" alt="Faculty member profile" />
+              <h4>Prof Ramesh Kumar</h4>
+              <p>Mathematics Professor</p>
+            </article>
+            <article class="card faculty-card team-card">
+              <img src="/frontend/assets/photo/sarfaraz.jpeg" alt="Faculty member profile" />
+              <h4>Prof Sarfaraz Khan</h4>
+              <p>Principal</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="gallery">
+        <div class="section-heading">
+          <span class="badge badge-soft">Gallery</span>
+          <h3>Moments from classrooms, events and achievements</h3>
+        </div>
+        <div class="gallery-grid">
+          <img src="/frontend/assets/photo/gal1.jpg" alt="Academic event" />
+          <img src="/frontend/assets/photo/gal2.jpg" alt="Student collaboration" />
+          <img src="/frontend/assets/photo/gal3.jpg" alt="Exam preparation" />
+          <img src="/frontend/assets/photo/gal4.jpg" alt="Classroom activity" />
+          <img class="extra hidden" src="/frontend/assets/photo/gal5.jpg" alt="Group study session" />
+          <img class="extra hidden" src="/frontend/assets/photo/gal6.jpg" alt="Campus celebration" />
+          <img class="extra hidden" src="/frontend/assets/photo/gal7.jpg" alt="Discussion room" />
+          <img class="extra hidden" src="/frontend/assets/photo/gal8.jpg" alt="Celebration" />
+        </div>
+        <div class="gallery-action">
+          <button class="btn btn-secondary" id="toggleGallery">View More Photos</button>
+        </div>
+      </section>
+
+      <section class="section reveal" id="admissions">
+        <div class="section-heading">
+          <span class="badge badge-soft">Admissions Open</span>
+          <h3>Apply for the 2025–26 academic session</h3>
+        </div>
+        <div class="contact-grid">
+          <div class="card contact-info">
+            <h4>Why join us?</h4>
+            <ul>
+              <li>Expert faculty for Pre-Medical, Pre-Engineering & Computer Science</li>
+              <li>Weekly tests and result tracking</li>
+              <li>Smart classrooms and focused coaching environment</li>
+              <li>Affordable fee structure with transparent records</li>
+            </ul>
+            <div class="contact-actions">
+              <a class="btn btn-primary whatsapp-btn" href="https://wa.me/923423479456?text=Hello%2C%20I%20want%20admission%20information%20for%20The%20Scholar%20Coaching%20Academy%20Umerkot" target="_blank" rel="noopener">WhatsApp Us</a>
+              <a class="btn btn-secondary" href="tel:+923423479456">Call +92 342 3479456</a>
+            </div>
+          </div>
+          <form class="card contact-form" id="admissionForm">
+            <h4>Admission Inquiry Form</h4>
+            <label class="field-label" for="adName">Full Name</label>
+            <input id="adName" name="name" type="text" placeholder="Your full name" required />
+            <label class="field-label" for="adPhone">Phone / WhatsApp</label>
+            <input id="adPhone" name="phone" type="tel" placeholder="+92 300 1234567" required />
+            <label class="field-label" for="adEmail">Email (optional)</label>
+            <input id="adEmail" name="email" type="email" placeholder="you@email.com" />
+            <label class="field-label" for="adProgram">Program</label>
+            <select id="adProgram" name="program" required>
+              <option value="">Select program</option>
+              <option value="Pre-Medical">Pre-Medical</option>
+              <option value="Pre-Engineering">Pre-Engineering</option>
+              <option value="Computer Science">Computer Science</option>
+            </select>
+            <label class="field-label" for="adMessage">Message</label>
+            <textarea id="adMessage" name="message" rows="3" placeholder="Tell us about your previous education..."></textarea>
+            <button class="btn btn-primary" type="submit">Submit Application</button>
+            <p id="admissionMessage" class="form-feedback" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-col">
+        <div class="brand footer-brand">
+          <img class="brand-mark" src="/frontend/assets/photo/scholar.logo.jpeg" alt="The Scholar Coaching Academy logo" />
+          <div>
+            <h4>The Scholar Coaching Academy</h4>
+            <p>Umerkot</p>
+          </div>
+        </div>
+        <p>Empowering learners with quality coaching, academic excellence, and strong values.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li><a href="tel:+923423479456">📞 +92 342 3479456</a></li>
+          <li><a href="https://wa.me/923423479456" target="_blank" rel="noopener">💬 WhatsApp</a></li>
+          <li><a href="mailto:info@scholarumerkot.edu">✉️ info@scholarumerkot.edu</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#faculty">Faculty</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#admissions">Admissions</a></li>
+          <li><a href="pages/auth/login.html">Student / Staff Login</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Location</h4>
+        <div class="map-box">
+          <iframe
+            id="locationMap"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3669.447325533875!2d69.74094147524402!3d25.361099983814135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39213f8f459541b1%3A0xc5ffb57ee1fb1afe!2sUmerkot%2C%20Pakistan!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </footer>
+
+    <div class="footer-bottom">
+      <p>© <span id="currentYear"></span> Built by Prof Azizullah Samejo. All rights reserved.</p>
+    </div>
+
+    <a class="whatsapp-float" href="https://wa.me/923423479456?text=Hello%2C%20I%20have%20a%20question%20about%20The%20Scholar%20Coaching%20Academy" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | The Scholar Coaching Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/css/auth.css" />
+  </head>
+  <body>
+    <div class="auth-shell">
+      <div class="auth-card">
+        <div class="auth-hero">
+          <img class="brand-mark" src="../../assets/photo/scholar.logo.jpeg" alt="The Scholar Coaching Academy logo" />
+          <h1>The Scholar Coaching Academy</h1>
+          <p>Sign in to your portal and continue your academic journey.</p>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <label class="field-label" for="role">Select Portal</label>
+          <select id="role" name="role">
+            <option value="student">Student Portal</option>
+            <option value="teacher">Teacher Portal</option>
+            <option value="admin">Admin Dashboard</option>
+          </select>
+
+          <label class="field-label" for="email">Email Address</label>
+          <input id="email" name="email" type="email" placeholder="name@scholar.edu" required />
+
+          <label class="field-label" for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Enter your password" required />
+
+          <div class="form-row">
+            <label class="checkbox-row"><input type="checkbox" /> Remember me</label>
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button class="login-btn" type="submit">Sign In</button>
+          <p id="formMessage" class="form-message" aria-live="polite"></p>
+          <p class="demo-hint">Demo: admin@scholar.edu / admin123</p>
+        </form>
+      </div>
+    </div>
+
+    <script src="../../assets/js/api.js"></script>
+    <script src="../../assets/js/auth.js"></script>
+  </body>
+</html>

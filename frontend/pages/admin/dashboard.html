@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | The Scholar Coaching Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/css/dashboard.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-box">
+          <div class="mark">SC</div>
+          <div><h1>The Scholar</h1><p>Admin Console</p></div>
+        </div>
+        <nav class="sidebar-nav"></nav>
+        <div class="sidebar-footer"><strong>Admissions</strong><p id="sidebarAdmissions">Loading...</p></div>
+      </aside>
+      <main class="main-panel">
+        <button class="mobile-toggle" aria-label="Toggle menu">☰</button>
+        <div class="topbar">
+          <div><h2>Administrative Overview</h2><p>Welcome back. Here is your daily performance snapshot.</p></div>
+          <div class="topbar-actions">
+            <div class="user-chip"><div class="avatar" id="userAvatar">A</div><span id="userName">Admin</span></div>
+            <button class="logout-btn" id="logoutBtn" type="button">Logout</button>
+          </div>
+        </div>
+        <section class="hero-card"><div><span class="hero-badge">Live Academy Summary</span><h3>Monitor students, faculty, fees, and academic progress from one dashboard.</h3></div></section>
+        <section class="stats-grid">
+          <article class="stat-card"><div class="label">Total Students</div><div class="value" id="statStudents">—</div></article>
+          <article class="stat-card"><div class="label">Active Teachers</div><div class="value" id="statTeachers">—</div></article>
+          <article class="stat-card"><div class="label">Attendance Rate</div><div class="value" id="statAttendance">—</div></article>
+          <article class="stat-card"><div class="label">Pending Fees</div><div class="value" id="statFees">—</div></article>
+        </section>
+        <section class="dashboard-grid">
+          <div class="panel"><div class="panel-header"><h4>Recent Admissions</h4><a class="muted" href="admissions.html">View All</a></div><div class="list" id="recentAdmissions"></div></div>
+          <div class="panel" id="studentsPanel">
+            <div class="panel-header"><h4>Students</h4><a class="muted" href="#">Manage</a></div>
+            <div class="panel-body">
+              <form id="studentForm" style="display:flex;gap:8px;flex-wrap:wrap">
+                <input id="sName" placeholder="Full name" required />
+                <input id="sPhone" placeholder="Phone" />
+                <input id="sEmail" placeholder="Email" />
+                <select id="sProgram"><option value="">Program</option><option>Pre-Medical</option><option>Pre-Engineering</option><option>Computer Science</option></select>
+                <button class="btn" type="submit">Add Student</button>
+              </form>
+              <div style="margin-top:12px;overflow:auto"><table id="studentsTable" style="width:100%"><thead><tr><th>Name</th><th>Phone</th><th>Program</th><th>Actions</th></tr></thead><tbody></tbody></table></div>
+            </div>
+          </div>
+          <div class="panel" id="feesPanel">
+            <div class="panel-header"><h4>Fees</h4><a class="muted" href="#">Manage</a></div>
+            <div class="panel-body">
+              <form id="feeForm" style="display:flex;gap:8px;flex-wrap:wrap">
+                <select id="feeStudent" required><option value="">Select student</option></select>
+                <input id="feeAmount" type="number" placeholder="Amount" required />
+                <input id="feeDesc" placeholder="Description" />
+                <button class="btn" type="submit">Create Fee</button>
+              </form>
+              <div style="margin-top:12px;overflow:auto"><table id="feesTable" style="width:100%"><thead><tr><th>Student</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead><tbody></tbody></table></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="../../assets/js/api.js"></script>
+    <script src="../../assets/js/dashboard-common.js"></script>
+    <script src="../../assets/js/admin-dashboard.js"></script>
+    <script src="../../assets/js/admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teachers | Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/css/dashboard.css" />
+  </head>
+  <body data-page="teachers">
+    <div class="app-shell">
+      <aside class="sidebar"><div class="brand-box"><div class="mark">SC</div><div><h1>The Scholar</h1><p>Admin Console</p></div></div><nav class="sidebar-nav"></nav></aside>
+      <main class="main-panel">
+        <button class="mobile-toggle" aria-label="Toggle menu">☰</button>
+        <div class="topbar"><div><h2>Teachers</h2><p>Manage faculty members.</p></div><div class="topbar-actions"><div class="user-chip"><div class="avatar" id="userAvatar">A</div><span id="userName">Admin</span></div><button class="logout-btn" id="logoutBtn" type="button">Logout</button></div></div>
+        <div class="page-toolbar"><h3>All Teachers</h3><button class="btn-primary" id="addBtn" type="button">+ Add Teacher</button></div>
+        <div class="panel table-card"><table><thead><tr><th>Name</th><th>Subject</th><th>Qualification</th><th>Programs</th><th>Actions</th></tr></thead><tbody id="dataTableBody"></tbody></table></div>
+      </main>
+    </div>
+    <div class="modal-overlay" id="formModal"><div class="modal"><h3 id="modalTitle">Add Teacher</h3><form id="dataForm" class="form-grid two-col">
+      <div class="form-field"><label>Name</label><input name="name" required /></div>
+      <div class="form-field"><label>Email</label><input name="email" type="email" required /></div>
+      <div class="form-field"><label>Password</label><input name="password" type="password" required /></div>
+      <div class="form-field"><label>Phone</label><input name="phone" /></div>
+      <div class="form-field"><label>Subject</label><input name="subject" required /></div>
+      <div class="form-field"><label>Qualification</label><input name="qualification" /></div>
+      <div class="form-field"><label>Experience</label><input name="experience" /></div>
+      <div class="form-field"><label>Assigned Programs (comma-separated)</label><input name="assignedPrograms" placeholder="Pre-Medical, Pre-Engineering" /></div>
+      <div class="modal-actions" style="grid-column:1/-1"><button class="btn-secondary" id="cancelBtn" type="button">Cancel</button><button class="btn-primary" type="submit">Save</button></div>
+    </form></div></div>
+    <script src="../../assets/js/api.js"></script><script src="../../assets/js/dashboard-common.js"></script><script src="../../assets/js/admin-pages.js"></script>
+  </body>
+</html>

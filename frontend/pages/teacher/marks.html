@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marks | Teacher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/css/dashboard.css" />
+  </head>
+  <body data-page="marks">
+    <div class="app-shell">
+      <aside class="sidebar"><div class="brand-box"><div class="mark">SC</div><div><h1>The Scholar</h1><p>Teacher Portal</p></div></div><nav class="sidebar-nav"></nav></aside>
+      <main class="main-panel">
+        <button class="mobile-toggle" aria-label="Toggle menu">☰</button>
+        <div class="topbar"><div><h2>Marks & Results</h2><p>Upload and view student scores.</p></div><div class="topbar-actions"><div class="user-chip"><div class="avatar" id="userAvatar">T</div><span id="userName">Teacher</span></div><button class="logout-btn" id="logoutBtn" type="button">Logout</button></div></div>
+        <div class="panel" style="margin-bottom:16px"><h4>Upload Result</h4><form id="marksForm" class="form-grid two-col" style="margin-top:12px">
+          <div class="form-field"><label>Student</label><select name="student" required></select></div>
+          <div class="form-field"><label>Subject</label><input name="subject" required /></div>
+          <div class="form-field"><label>Exam Type</label><select name="examType"><option>Weekly Test</option><option>Midterm</option><option>Final</option></select></div>
+          <div class="form-field"><label>Score (%)</label><input name="score" type="number" min="0" max="100" required /></div>
+          <div><button class="btn-primary" type="submit">Upload Result</button></div>
+        </form></div>
+        <div class="panel table-card"><table><thead><tr><th>Student</th><th>Subject</th><th>Exam</th><th>Score</th></tr></thead><tbody id="dataTableBody"></tbody></table></div>
+      </main>
+    </div>
+    <script src="../../assets/js/api.js"></script><script src="../../assets/js/dashboard-common.js"></script><script src="../../assets/js/teacher-pages.js"></script>
+  </body>
+</html>

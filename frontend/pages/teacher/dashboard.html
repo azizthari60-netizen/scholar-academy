@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Portal | The Scholar Coaching Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/css/dashboard.css" />
+  </head>
+  <body data-page="dashboard">
+    <div class="app-shell">
+      <aside class="sidebar"><div class="brand-box"><div class="mark">SC</div><div><h1>The Scholar</h1><p>Teacher Portal</p></div></div><nav class="sidebar-nav"></nav><div class="sidebar-footer"><strong>Subject</strong><p id="subjectInfo">Loading...</p></div></aside>
+      <main class="main-panel">
+        <button class="mobile-toggle" aria-label="Toggle menu">☰</button>
+        <div class="topbar"><div><h2>Teacher Workspace</h2><p>Welcome, <span id="welcomeName">Teacher</span>.</p></div><div class="topbar-actions"><div class="user-chip"><div class="avatar" id="userAvatar">T</div><span id="userName">Teacher</span></div><button class="logout-btn" id="logoutBtn" type="button">Logout</button></div></div>
+        <section class="stats-grid">
+          <article class="stat-card"><div class="label">Classes</div><div class="value" id="statClasses">—</div></article>
+          <article class="stat-card"><div class="label">Students</div><div class="value" id="statStudents">—</div></article>
+          <article class="stat-card"><div class="label">Pending Reviews</div><div class="value" id="statPending">—</div></article>
+          <article class="stat-card"><div class="label">Assignments</div><div class="value" id="statNotes">—</div></article>
+        </section>
+        <section class="dashboard-grid">
+          <div class="panel table-card"><div class="panel-header"><h4>Student Progress</h4></div><table><thead><tr><th>Student</th><th>Subject</th><th>Status</th><th>Score</th></tr></thead><tbody id="progressTable"></tbody></table></div>
+          <div class="panel"><div class="panel-header"><h4>Today's Agenda</h4></div><div class="timeline" id="agendaList"></div></div>
+        </section>
+      </main>
+    </div>
+    <script src="../../assets/js/api.js"></script><script src="../../assets/js/dashboard-common.js"></script><script src="../../assets/js/teacher-pages.js"></script>
+  </body>
+</html>
