@@ -12,7 +12,7 @@ const Attendance = require('./models/Attendance');
 const Admission = require('./models/Admission');
 
 async function seed() {
-  await mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/scholar_db');
+  await mongoose.connect(process.env.MONGO_URI);
   console.log('Connected to MongoDB for seeding...');
 
   await Promise.all([
