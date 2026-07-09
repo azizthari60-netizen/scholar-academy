@@ -63,7 +63,7 @@ const ScholarAPI = (() => {
     del: (path) => request(path, { method: 'DELETE' }),
     logout: () => {
       clearSession();
-      window.location.href = '/pages/auth/login.html';
+      window.location.href = '/frontend/pages/auth/login.html';
     },
   };
 })();
