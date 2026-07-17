@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    const html = await ScholarAPI.get(`/api/fees/${feeId}/receipt`);
+    const html = await ScholarAPI.fetchHtml(`/api/fees/${feeId}/receipt`);
     receiptContent.innerHTML = html;
   } catch (err) {
     receiptContent.innerHTML = `<div class="empty-state">Unable to load receipt: ${err.message}</div>`;

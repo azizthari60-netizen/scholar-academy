@@ -61,9 +61,17 @@ const ScholarAPI = (() => {
     put: (path, body) => request(path, { method: 'PUT', body: JSON.stringify(body) }),
     patch: (path, body) => request(path, { method: 'PATCH', body: JSON.stringify(body) }),
     del: (path) => request(path, { method: 'DELETE' }),
+    fetchHtml: async (path) => {
+      const headers = {};
+      const token = getToken();
+      if (token) headers.Authorization = `Bearer ${token}`;
+      const res = await fetch(`${getBaseUrl()}${path}`, { headers });
+      if (!res.ok) throw new Error('Unable to load content');
+      return res.text();
+    },
     logout: () => {
       clearSession();
-      window.location.href = '/frontend/pages/auth/login.html';
+      window.location.href = '/pages/auth/login.html';
     },
   };
 })();

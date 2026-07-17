@@ -2,6 +2,7 @@ const express = require('express');
 const { authenticate, authorize } = require('../middleware/auth');
 const Result = require('../models/Result');
 const Student = require('../models/Student');
+const Teacher = require('../models/Teacher');
 
 const router = express.Router();
 
@@ -11,6 +12,14 @@ router.get('/', authenticate, async (req, res) => {
     if (req.user.role === 'student') {
       const profile = await Student.findOne({ user: req.user._id });
       if (profile) filter.student = profile._id;
+    } else if (req.user.role === 'teacher') {
+      const profile = await Teacher.findOne({ user: req.user._id });
+      if (profile) {
+        const students = await Student.find({
+          program: { $in: profile.assignedPrograms.length ? profile.assignedPrograms : ['Pre-Medical', 'Pre-Engineering', 'Computer Science'] },
+        }).select('_id');
+        filter.student = { $in: students.map((student) => student._id) };
+      }
     } else if (req.query.student) {
       filter.student = req.query.student;
     }

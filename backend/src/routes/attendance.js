@@ -5,6 +5,14 @@ const Student = require('../models/Student');
 
 const router = express.Router();
 
+async function refreshStudentAttendancePercent(studentId) {
+  const records = await Attendance.find({ student: studentId });
+  if (!records.length) return;
+  const presentCount = records.filter((record) => record.status === 'present' || record.status === 'late').length;
+  const percent = Math.round((presentCount / records.length) * 100);
+  await Student.findByIdAndUpdate(studentId, { attendancePercent: percent });
+}
+
 router.get('/', authenticate, async (req, res) => {
   try {
     const filter = {};
@@ -37,6 +45,7 @@ router.post('/', authenticate, authorize('admin', 'teacher'), async (req, res) =
       { status, markedBy: req.user._id },
       { upsert: true, new: true }
     );
+    await refreshStudentAttendancePercent(student);
     res.status(201).json(record);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -47,6 +56,7 @@ router.post('/bulk', authenticate, authorize('admin', 'teacher'), async (req, re
   try {
     const { records } = req.body;
     const results = [];
+    const studentIds = new Set();
     for (const item of records) {
       const record = await Attendance.findOneAndUpdate(
         { student: item.student, date: new Date(item.date), subject: item.subject || '' },
@@ -54,7 +64,9 @@ router.post('/bulk', authenticate, authorize('admin', 'teacher'), async (req, re
         { upsert: true, new: true }
       );
       results.push(record);
+      studentIds.add(String(item.student));
     }
+    await Promise.all([...studentIds].map((studentId) => refreshStudentAttendancePercent(studentId)));
     res.status(201).json(results);
   } catch (err) {
     res.status(500).json({ message: err.message });

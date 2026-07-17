@@ -87,7 +87,25 @@ function statusBadge(status) {
   return `<span class="badge ${map[status] || 'blue'}">${status}</span>`;
 }
 
+function renderUserChip(user) {
+  const nameEl = document.getElementById('userName');
+  const avatarEl = document.getElementById('userAvatar');
+  if (nameEl) nameEl.textContent = user.name;
+  if (avatarEl) avatarEl.textContent = user.name.charAt(0).toUpperCase();
+}
+
+function openModal(id) {
+  document.getElementById(id)?.classList.add('open');
+}
+
+function closeModal(id) {
+  document.getElementById(id)?.classList.remove('open');
+}
+
 window.requireAuth = requireAuth;
 window.initDashboardShell = initDashboardShell;
 window.formatDate = formatDate;
 window.statusBadge = statusBadge;
+window.renderUserChip = renderUserChip;
+window.openModal = openModal;
+window.closeModal = closeModal;

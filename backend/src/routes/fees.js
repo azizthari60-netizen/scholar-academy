@@ -6,10 +6,18 @@ const Student = require('../models/Student');
 const router = express.Router();
 
 // list fees (optional ?student=ID)
-router.get('/', authenticate, authorize('admin'), async (req, res) => {
+router.get('/', authenticate, async (req, res) => {
   try {
     const filter = {};
-    if (req.query.student) filter.student = req.query.student;
+    if (req.user.role === 'student') {
+      const profile = await Student.findOne({ user: req.user._id });
+      if (!profile) return res.json([]);
+      filter.student = profile._id;
+    } else if (req.query.student) {
+      filter.student = req.query.student;
+    } else if (req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Access denied' });
+    }
     const fees = await Fee.find(filter)
       .populate({ path: 'student', populate: { path: 'user', select: 'name' } })
       .sort({ createdAt: -1 });
@@ -65,9 +73,15 @@ router.patch('/:id/pay', authenticate, authorize('admin'), async (req, res) => {
 
 router.get('/:id/receipt', async (req, res) => {
   try {
-    const fee = await Fee.findById(req.params.id).populate('student');
+    const fee = await Fee.findById(req.params.id).populate({
+      path: 'student',
+      populate: { path: 'user', select: 'name phone email' },
+    });
     if (!fee) return res.status(404).send('Fee not found');
 
+    const studentName = fee.student?.user?.name || fee.student?.name || 'Student';
+    const studentPhone = fee.student?.user?.phone || fee.student?.phone || '';
+    const studentEmail = fee.student?.user?.email || fee.student?.email || '';
     const paidStatus = fee.status === 'paid' ? 'Paid' : 'Pending';
     const html = `<!doctype html>
     <html>
@@ -89,8 +103,8 @@ router.get('/:id/receipt', async (req, res) => {
           <div>Date: <strong>${(fee.createdAt||new Date()).toLocaleString()}</strong></div>
           <hr />
           <h3>Student</h3>
-          <div><strong>${fee.student.name}</strong></div>
-          <div>${fee.student.phone || ''} ${fee.student.email || ''}</div>
+          <div><strong>${studentName}</strong></div>
+          <div>${studentPhone} ${studentEmail}</div>
 
           <h3>Payment</h3>
           <table>

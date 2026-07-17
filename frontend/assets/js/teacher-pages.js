@@ -49,7 +49,9 @@ async function loadMarks() {
     form.student.innerHTML = students.map((s) => `<option value="${s._id}">${s.user.name}</option>`).join('');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      await ScholarAPI.post('/api/results', Object.fromEntries(new FormData(form)));
+      const payload = Object.fromEntries(new FormData(form));
+      payload.score = Number(payload.score);
+      await ScholarAPI.post('/api/results', payload);
       form.reset();
       loadMarks();
     });
@@ -64,31 +66,45 @@ async function loadMarks() {
 async function initAttendance() {
   const students = await ScholarAPI.get('/api/students');
   const dateInput = document.getElementById('attendanceDate');
+  const subjectInput = document.getElementById('attendanceSubject');
   dateInput.value = new Date().toISOString().split('T')[0];
 
-  function renderRows() {
-    document.getElementById('attendanceBody').innerHTML = students.map((s) => `
+  async function renderRows() {
+    let existing = [];
+    try {
+      existing = await ScholarAPI.get(`/api/attendance?date=${dateInput.value}`);
+    } catch {
+      existing = [];
+    }
+
+    document.getElementById('attendanceBody').innerHTML = students.map((s) => {
+      const record = existing.find((item) => String(item.student?._id || item.student) === String(s._id));
+      const status = record?.status || 'present';
+      return `
       <tr>
         <td>${s.user.name}</td>
         <td>${s.rollNumber}</td>
         <td>
           <select data-student="${s._id}">
-            <option value="present">Present</option>
-            <option value="late">Late</option>
-            <option value="absent">Absent</option>
+            <option value="present" ${status === 'present' ? 'selected' : ''}>Present</option>
+            <option value="late" ${status === 'late' ? 'selected' : ''}>Late</option>
+            <option value="absent" ${status === 'absent' ? 'selected' : ''}>Absent</option>
           </select>
         </td>
-      </tr>`).join('');
+      </tr>`;
+    }).join('');
   }
 
-  renderRows();
+  dateInput.addEventListener('change', renderRows);
+  subjectInput?.addEventListener('change', renderRows);
+  await renderRows();
 
   document.getElementById('saveAttendance').addEventListener('click', async () => {
     const records = [...document.querySelectorAll('#attendanceBody select')].map((sel) => ({
       student: sel.dataset.student,
       date: dateInput.value,
       status: sel.value,
-      subject: document.getElementById('attendanceSubject').value,
+      subject: subjectInput.value,
     }));
     await ScholarAPI.post('/api/attendance/bulk', { records });
     alert('Attendance saved successfully.');
@@ -97,7 +113,6 @@ async function initAttendance() {
 
 async function initTeacherAssignments() {
   const form = document.getElementById('assignmentForm');
-  const auth = await ScholarAPI.me();
   async function load() {
     const assignments = await ScholarAPI.get('/api/assignments');
     document.getElementById('dataTableBody').innerHTML = assignments.length
@@ -107,7 +122,6 @@ async function initTeacherAssignments() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const payload = Object.fromEntries(new FormData(form));
-    payload.teacher = auth.profile._id;
     await ScholarAPI.post('/api/assignments', payload);
     form.reset();
     load();

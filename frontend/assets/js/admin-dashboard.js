@@ -1,22 +1,3 @@
-function renderUserChip(user) {
-  const nameEl = document.getElementById('userName');
-  const avatarEl = document.getElementById('userAvatar');
-  if (nameEl) nameEl.textContent = user.name;
-  if (avatarEl) avatarEl.textContent = user.name.charAt(0).toUpperCase();
-}
-
-function openModal(id) {
-  document.getElementById(id)?.classList.add('open');
-}
-
-function closeModal(id) {
-  document.getElementById(id)?.classList.remove('open');
-}
-
-window.renderUserChip = renderUserChip;
-window.openModal = openModal;
-window.closeModal = closeModal;
-
 document.addEventListener('DOMContentLoaded', async () => {
   const auth = await requireAuth(['admin']);
   if (!auth) return;

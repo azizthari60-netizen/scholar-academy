@@ -5,7 +5,7 @@ const User = require('../models/User');
 
 const router = express.Router();
 
-router.get('/', authenticate, authorize('admin'), async (req, res) => {
+router.get('/', authenticate, authorize('admin', 'teacher'), async (req, res) => {
   try {
     const students = await Student.find().populate('user', '-password').sort({ createdAt: -1 });
     res.json(students);
@@ -29,12 +29,18 @@ router.post('/', authenticate, authorize('admin'), async (req, res) => {
       guardianPhone,
     } = req.body;
 
-    if (!name || !email || !rollNumber || !program) {
-      return res.status(400).json({ message: 'Name, email, roll number, and program are required' });
+    if (!name || !email || !program) {
+      return res.status(400).json({ message: 'Name, email, and program are required' });
     }
 
     const existing = await User.findOne({ email: email.toLowerCase().trim() });
     if (existing) return res.status(409).json({ message: 'Email already registered' });
+
+    let finalRollNumber = rollNumber;
+    if (!finalRollNumber) {
+      const count = await Student.countDocuments();
+      finalRollNumber = `SC-${new Date().getFullYear()}-${String(count + 1).padStart(3, '0')}`;
+    }
 
     const user = await User.create({
       name,
@@ -47,10 +53,10 @@ router.post('/', authenticate, authorize('admin'), async (req, res) => {
     const student = await Student.create({
       user: user._id,
       name,
-      email,
+      email: email.toLowerCase().trim(),
       phone,
       program,
-      rollNumber,
+      rollNumber: finalRollNumber,
       batch,
       section,
       guardianName,

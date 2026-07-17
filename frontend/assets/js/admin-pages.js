@@ -220,7 +220,7 @@ async function initFeesPage() {
           <td>${f.month || '—'}</td>
           <td>${formatDate(f.dueDate)}</td>
           <td>${statusBadge(f.status)}</td>
-          <td>${f.status !== 'paid' ? `<button class="btn-sm btn-primary" data-pay="${f._id}">Mark Paid</button>` : formatDate(f.paidDate)}</td>
+          <td>${f.status !== 'paid' ? `<button class="btn-sm btn-primary" data-pay="${f._id}">Mark Paid</button> ` : ''}<a class="btn-sm btn-secondary" href="/api/fees/${f._id}/receipt" target="_blank">Receipt</a></td>
         </tr>`).join('')
       : '<tr><td colspan="6" class="empty-state">No fee records yet.</td></tr>';
 

@@ -2,9 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-const mongoose = require('mongoose');
 const dns = require('dns');
 const path = require('path');
+const connectDB = require('./db');
 const authRoutes = require('./routes/auth');
 const studentRoutes = require('./routes/students');
 const teacherRoutes = require('./routes/teachers');
@@ -35,6 +35,16 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Scholar Coaching Academy API is running' });
 });
 
+app.use('/api', async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error('Database connection error:', err.message);
+    res.status(503).json({ message: 'Database unavailable. Please try again shortly.' });
+  }
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/students', studentRoutes);
 app.use('/api/teachers', teacherRoutes);
@@ -63,17 +73,10 @@ app.get('*', (req, res, next) => {
 
 dns.setServers(['8.8.8.8', '8.8.4.4']);
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 20000,
-  retryWrites: true,
-  w: 'majority',
-})
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.error('MongoDB connection error:', err));
-
 if (require.main === module) {
+  connectDB()
+    .then(() => console.log('MongoDB connected'))
+    .catch((err) => console.error('MongoDB connection error:', err));
   startServer();
 }
 

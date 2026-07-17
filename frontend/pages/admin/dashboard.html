@@ -37,37 +37,18 @@
         </section>
         <section class="dashboard-grid">
           <div class="panel"><div class="panel-header"><h4>Recent Admissions</h4><a class="muted" href="admissions.html">View All</a></div><div class="list" id="recentAdmissions"></div></div>
-          <div class="panel" id="studentsPanel">
-            <div class="panel-header"><h4>Students</h4><a class="muted" href="#">Manage</a></div>
-            <div class="panel-body">
-              <form id="studentForm" style="display:flex;gap:8px;flex-wrap:wrap">
-                <input id="sName" placeholder="Full name" required />
-                <input id="sPhone" placeholder="Phone" />
-                <input id="sEmail" placeholder="Email" />
-                <select id="sProgram"><option value="">Program</option><option>Pre-Medical</option><option>Pre-Engineering</option><option>Computer Science</option></select>
-                <button class="btn" type="submit">Add Student</button>
-              </form>
-              <div style="margin-top:12px;overflow:auto"><table id="studentsTable" style="width:100%"><thead><tr><th>Name</th><th>Phone</th><th>Program</th><th>Actions</th></tr></thead><tbody></tbody></table></div>
-            </div>
-          </div>
-          <div class="panel" id="feesPanel">
-            <div class="panel-header"><h4>Fees</h4><a class="muted" href="#">Manage</a></div>
-            <div class="panel-body">
-              <form id="feeForm" style="display:flex;gap:8px;flex-wrap:wrap">
-                <select id="feeStudent" required><option value="">Select student</option></select>
-                <input id="feeAmount" type="number" placeholder="Amount" required />
-                <input id="feeDesc" placeholder="Description" />
-                <button class="btn" type="submit">Create Fee</button>
-              </form>
-              <div style="margin-top:12px;overflow:auto"><table id="feesTable" style="width:100%"><thead><tr><th>Student</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead><tbody></tbody></table></div>
-            </div>
-          </div>
+          <div class="panel"><div class="panel-header"><h4>Recent Results</h4><a class="muted" href="results.html">View All</a></div><div class="list" id="recentResults"></div></div>
+        </section>
+        <section class="quick-links-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px">
+          <a class="panel quick-card" href="students.html"><h5>Manage Students</h5><p class="muted">Add, edit, and view records</p></a>
+          <a class="panel quick-card" href="teachers.html"><h5>Manage Teachers</h5><p class="muted">Faculty accounts and subjects</p></a>
+          <a class="panel quick-card" href="fees.html"><h5>Fee Tracking</h5><p class="muted">Dues, payments, and receipts</p></a>
+          <a class="panel quick-card" href="timetable.html"><h5>Timetable</h5><p class="muted">Class schedules</p></a>
         </section>
       </main>
     </div>
     <script src="../../assets/js/api.js"></script>
     <script src="../../assets/js/dashboard-common.js"></script>
     <script src="../../assets/js/admin-dashboard.js"></script>
-    <script src="../../assets/js/admin.js"></script>
   </body>
 </html>
